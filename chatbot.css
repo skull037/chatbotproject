@@ -58,6 +58,7 @@ h4 {
     border: 1px solid #C0C2C5;
     padding: 10px;
     font-size: 18px;
+     overflow-y: scroll;
 }
 
 #question-area {
