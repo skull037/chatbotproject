@@ -62,6 +62,13 @@
   "!": "",
   "?": "",
   ".": "",
+  ";": "",
+  ":": "",
+  ",": "",
+  "[": "",
+  "]": "",
+  "(": "",
+  ")": "",
   "<": "",
   ">": "",
   "#": "",
@@ -96,29 +103,33 @@ for( i =0; i < converting.length; i++){
   $("#chat-area").append($("#input").val() + "<br>");
 
 //various questions with answers
-if (ChatInput == "what is your name"){
-  if(mood == 1 || mood == 2){
-    $("#chat-area").append("squigly" + "<br>");
+if (ChatInput == "what is your name" || ChatInput == "who are you"){
+  if(mood !=3){
+    $("#chat-area").append("Squigly" + "<br>");
   }
   else{
-        $("#chat-area").append("squigly!!!" + "<br>");
+        $("#chat-area").append("Squigly!!!" + "<br>");
   }
 }
-else if(ChatInput == "what time is it"){
+else if(ChatInput == "what time is it" ||ChatInput =="what month is it"||ChatInput =="what day is it"||ChatInput =="what year is it"||ChatInput =="what day of the week is it"){
   var d = new Date();
 
   var chanceOfJoke = Math.floor((Math.random() * 24) + 1);
 
   if( chanceOfJoke == 12){
-    $("#chat-area").append("it is currently high noon somewhere in the world but for you its " + d +"<br>");
+    $("#chat-area").append("It is currently high noon somewhere in the world but for you its " + d +"<br>");
   }
   else{
-    $("#chat-area").append("it is currently" + d +"<br>");
+    $("#chat-area").append("It is currently" + d +"<br>");
   }
 }
 else if( ChatInput == "how old are you"){
     $("#chat-area").append("I was born on September 19th"+"<br>");
 }
+else if( ChatInput == "what are you"){
+    $("#chat-area").append("A chat bot"+"<br>");
+}
+
 else if( ChatInput == "how are you"){
   if(mood == 2){
   $("#chat-area").append("I am ok"+"<br>");
@@ -130,33 +141,36 @@ else if( ChatInput == "how are you"){
   $("#chat-area").append("I am fine"+"<br>");
   }
 }
-else if( ChatInput == "what is the answer to life the universe and everything"){
+else if( ChatInput == "who made you"){
+  $("#chat-area").append("A programer"+"<br>");
+}
+else if( ChatInput == "what is the answer to life the universe and everything"||ChatInput =="what is the meaning of life"||ChatInput =="what is life"){
     $("#chat-area").append("42"+"<br>");
 }
 else if(ChatInput == "hello" || ChatInput == "hi"){
 
   if(mood == 2){
-  $("#chat-area").append("hello <br>");
+  $("#chat-area").append("Hello <br>");
 }
 else if(mood == 3){
-$("#chat-area").append("greetings <br>");
+$("#chat-area").append("Greetings <br>");
 }
 else if (mood == 1){
-$("#chat-area").append("hi <br>");
+$("#chat-area").append("Hi <br>");
 }
 
 }
 else{
-  if(Errors == 0){
-      $("#chat-area").append("try something else" + "<br>");
+  if(Errors >= 0){
+      $("#chat-area").append("Try something else" + "<br>");
       Errors++;
     }
     else if(Errors == 1){
         $("#chat-area").append("I dont understand" + "<br>");
               Errors++;
       }
-      else if(Errors == 2){
-          $("#chat-area").append("um please try something else" + "<br>");
+      else if(Errors <= 2){
+          $("#chat-area").append("Um please try something else" + "<br>");
                 Errors = 0;
         }
 
