@@ -1,6 +1,6 @@
   var Errors = 0;
-
-  $("#input").keyup(function(Speak) {
+//allows enter to be pressed to enter input
+ $("#input").keyup(function(Speak) {
     if(Speak.which == 13) {
     $("#talkButton").click();
     }
@@ -70,6 +70,14 @@
   "(": "",
   ")": "",
   "<": "",
+  "@": "",
+  "$": "",
+  "%": "",
+  "^": "",
+  "&": "",
+  "*": "",
+  "`": "",
+  "~": "",
   ">": "",
   "#": "",
   " ": " ",
@@ -83,12 +91,19 @@ var wordConversion = {
 "day": "time",
 "year": "time",
 "month": "time",
+"it": "",
+"is": "",
+"a": "",
+" ": " ",
+"": "",
+"what":"what"
 }
 
 
 function Speak(){
+  //used for semi random responces
       var mood = Math.floor((Math.random() * 3 + 1));
-
+//translates the user's input
   var ChatInput = $("#input").val();
   var converting;
   var storage = "";
@@ -102,7 +117,7 @@ for( i =0; i < converting.length; i++){
 //echo input
   $("#chat-area").append($("#input").val() + "<br>");
 
-//various questions with answers
+//lots of  questions with answers
 if (ChatInput == "what is your name" || ChatInput == "who are you"){
   if(mood !=3){
     $("#chat-area").append("Squigly" + "<br>");
@@ -111,19 +126,19 @@ if (ChatInput == "what is your name" || ChatInput == "who are you"){
         $("#chat-area").append("Squigly!!!" + "<br>");
   }
 }
-else if(ChatInput == "what time is it" ||ChatInput =="what month is it"||ChatInput =="what day is it"||ChatInput =="what year is it"||ChatInput =="what day of the week is it"){
+else if(ChatInput == "what time is it" ||ChatInput == "what time" ||ChatInput =="what month is it"||ChatInput =="what day is it"||ChatInput =="what year is it"||ChatInput =="what day of the week is it"){
   var d = new Date();
 
-  var chanceOfJoke = Math.floor((Math.random() * 24) + 1);
+  var chanceOfJoke = Math.floor((Math.random() * 12)+ 1);
 
   if( chanceOfJoke == 12){
     $("#chat-area").append("It is currently high noon somewhere in the world but for you its " + d +"<br>");
   }
   else{
-    $("#chat-area").append("It is currently" + d +"<br>");
+    $("#chat-area").append("It is currently " + d +"<br>");
   }
 }
-else if( ChatInput == "how old are you"){
+else if( ChatInput == "how old are you" || ChatInput == "when is your brithday"){
     $("#chat-area").append("I was born on September 19th"+"<br>");
 }
 else if( ChatInput == "what are you"){
@@ -144,10 +159,34 @@ else if( ChatInput == "how are you"){
 else if( ChatInput == "who made you"){
   $("#chat-area").append("A programer"+"<br>");
 }
+else if( ChatInput == "good morning"){
+  if(mood >= 2){
+  $("#chat-area").append("Moring!"+"<br>");
+}
+else{
+    $("#chat-area").append("Good moring!"+"<br>");
+}
+}
+else if( ChatInput == "good afternoon"){
+    if(mood == 3){
+  $("#chat-area").append("Good afternoon to you too!"+"<br>");
+}
+else{
+    $("#chat-area").append("Good afternoon!"+"<br>");
+}
+}
+else if( ChatInput == "good night"){
+  if(mood == 3){
+  $("#chat-area").append("Good Night!"+"<br>");
+}
+else{
+    $("#chat-area").append("Night!"+"<br>");
+}
+}
 else if( ChatInput == "what is the answer to life the universe and everything"||ChatInput =="what is the meaning of life"||ChatInput =="what is life"){
     $("#chat-area").append("42"+"<br>");
 }
-else if(ChatInput == "hello" || ChatInput == "hi"){
+else if(ChatInput == "hello" || ChatInput == "hi"|| ChatInput == "greetings"){
 
   if(mood == 2){
   $("#chat-area").append("Hello <br>");
@@ -161,18 +200,26 @@ $("#chat-area").append("Hi <br>");
 
 }
 else{
-  if(Errors >= 0){
-      $("#chat-area").append("Try something else" + "<br>");
+  if(Errors == 0){
+      $("#chat-area").append(ChatInput + "?" + "<br>");
       Errors++;
     }
     else if(Errors == 1){
+        $("#chat-area").append("Try something else" + "<br>");
+        Errors++;
+      }
+    else if(Errors == 2){
         $("#chat-area").append("I dont understand" + "<br>");
               Errors++;
       }
-      else if(Errors <= 2){
-          $("#chat-area").append("Um please try something else" + "<br>");
-                Errors = 0;
+      else if(Errors == 3){
+          $("#chat-area").append("Please try something else" + "<br>");
+                Errors++;
         }
+        else if(Errors == 4){
+            $("#chat-area").append("If this is not the responce you wanted please try again" + "<br>");
+                  Errors = 0;
+          }
 
 }
 
