@@ -1,3 +1,4 @@
+//number of times chatbot doesnt understand user input
   var Errors = 0;
 //allows enter to be pressed to enter input
  $("#input").keyup(function(Speak) {
@@ -59,6 +60,16 @@
   "x": "x",
   "y": "y",
   "z": "z",
+  "0": "0",
+  "1": "1",
+  "2": "2",
+  "3": "3",
+  "4": "4",
+  "5": "5",
+  "6": "6",
+  "7": "7",
+  "9": "9",
+  "8": "8",
   "!": "",
   "?": "",
   ".": "",
@@ -80,25 +91,13 @@
   "~": "",
   ">": "",
   "#": "",
+  "+": "",
+  "=": "",
+  "-": "",
+  "_": "",
   " ": " ",
+  "/":"",
 }
-var wordConversion = {
-"hi":"greeting",
-"hello":"greeting",
-"hey":"greeting",
-"greetings": "greeting",
-"time": "time",
-"day": "time",
-"year": "time",
-"month": "time",
-"it": "",
-"is": "",
-"a": "",
-" ": " ",
-"": "",
-"what":"what"
-}
-
 
 function Speak(){
   //used for semi random responces
@@ -111,14 +110,13 @@ function Speak(){
 for( i =0; i < converting.length; i++){
     storage += letterConversion[converting[i]];
   }
-  console.log( storage );
   ChatInput = storage;
 
 //echo input
   $("#chat-area").append($("#input").val() + "<br>");
 
 //lots of  questions with answers
-if (ChatInput == "what is your name" || ChatInput == "who are you"){
+if (ChatInput == "what is your name" || ChatInput == "who are you"|| ChatInput == "name"){
   if(mood !=3){
     $("#chat-area").append("Squigly" + "<br>");
   }
@@ -126,7 +124,7 @@ if (ChatInput == "what is your name" || ChatInput == "who are you"){
         $("#chat-area").append("Squigly!!!" + "<br>");
   }
 }
-else if(ChatInput == "what time is it" ||ChatInput == "what time" ||ChatInput =="what month is it"||ChatInput =="what day is it"||ChatInput =="what year is it"||ChatInput =="what day of the week is it"){
+else if(ChatInput == "what time is it" ||ChatInput == "what is the current time" ||ChatInput == "whattime" ||ChatInput =="what month is it"||ChatInput =="what day is it"||ChatInput =="what year is it"||ChatInput =="what day of the week is it"){
   var d = new Date();
 
   var chanceOfJoke = Math.floor((Math.random() * 12)+ 1);
@@ -185,6 +183,9 @@ else{
 }
 else if( ChatInput == "what is the answer to life the universe and everything"||ChatInput =="what is the meaning of life"||ChatInput =="what is life"){
     $("#chat-area").append("42"+"<br>");
+}
+else if( ChatInput ==""){
+    $("#chat-area").append("Please type something I can read"+"<br>");
 }
 else if(ChatInput == "hello" || ChatInput == "hi"|| ChatInput == "greetings"){
 
