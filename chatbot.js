@@ -6,7 +6,7 @@
     $("#talkButton").click();
     }
 });
-
+//makes lowercase and removes most puncuation
   var letterConversion = {
   " ": " ",
 	"A": "a",
@@ -204,6 +204,17 @@ else if( ChatInput == "what is the answer to life the universe and everything"||
 }
 else if( ChatInput ==""){
     $("#chat-area").append("Please type something I can read"+"<br>");
+}
+else if( ChatInput =="tell me a joke"||ChatInput =="say a joke"){
+  if(mood == 1){
+    $("#chat-area").append("A joke is a thing that someone says to cause amusement or laughter, especially a story with a funny punchline."+"<br>");
+  }
+  if(mood == 2){
+    $("#chat-area").append("This answer"+"<br>");
+  }
+  if(mood == 3){
+    $("#chat-area").append("Up up down down left right left right"+"<br>");
+  }
 }
 else if(ChatInput == "hello" || ChatInput == "hi"|| ChatInput == "greetings"){
 
