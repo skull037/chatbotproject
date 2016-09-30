@@ -8,6 +8,7 @@
 });
 
   var letterConversion = {
+  " ": " ",
 	"A": "a",
 	"B": "b",
 	"C": "c",
@@ -95,13 +96,13 @@
   "=": "",
   "-": "",
   "_": "",
-  " ": " ",
   "/":"",
 }
 
 function Speak(){
   //used for semi random responces
       var mood = Math.floor((Math.random() * 3 + 1));
+      var coinFlip = Math.floor((Math.random() * 2 + 1));
 //translates the user's input
   var ChatInput = $("#input").val();
   var converting;
@@ -124,7 +125,7 @@ if (ChatInput == "what is your name" || ChatInput == "who are you"|| ChatInput =
         $("#chat-area").append("Squigly!!!" + "<br>");
   }
 }
-else if(ChatInput == "what time is it" ||ChatInput == "what is the current time" ||ChatInput == "whattime" ||ChatInput =="what month is it"||ChatInput =="what day is it"||ChatInput =="what year is it"||ChatInput =="what day of the week is it"){
+else if(ChatInput == "what time is it" ||ChatInput == "what is the current time" ||ChatInput == "what time" ||ChatInput =="what month is it"||ChatInput =="what day is it"||ChatInput =="what year is it"||ChatInput =="what day of the week is it"){
   var d = new Date();
 
   var chanceOfJoke = Math.floor((Math.random() * 12)+ 1);
@@ -137,7 +138,7 @@ else if(ChatInput == "what time is it" ||ChatInput == "what is the current time"
   }
 }
 else if( ChatInput == "how old are you" || ChatInput == "when is your brithday"){
-    $("#chat-area").append("I was born on September 19th"+"<br>");
+    $("#chat-area").append("I was born on September 19th 2016"+"<br>");
 }
 else if( ChatInput == "what are you"){
     $("#chat-area").append("A chat bot"+"<br>");
@@ -156,6 +157,23 @@ else if( ChatInput == "how are you"){
 }
 else if( ChatInput == "who made you"){
   $("#chat-area").append("A programer"+"<br>");
+}
+else if(ChatInput == "say a random number"||ChatInput =="give a random number"||ChatInput =="say a number"||ChatInput =="give a number"){
+  $("#chat-area").append("Your random number is "+ Math.floor((Math.random() * 100))+"<br>");
+}
+else if( ChatInput == "roll a die"||ChatInput =="roll a dice"){
+  $("#chat-area").append("You rolled "+ Math.floor(Math.random() * (6) + 1) + "<br>");
+}
+else if( ChatInput == "flip a coin"){
+  if(coinFlip == 1){
+  $("#chat-area").append("heads <br>");
+}
+else if(coinFlip == 2){
+$("#chat-area").append("tails <br>");
+}
+else{
+  $("#chat-area").append("I can't tell <br>");
+}
 }
 else if( ChatInput == "good morning"){
   if(mood >= 2){
@@ -202,7 +220,7 @@ $("#chat-area").append("Hi <br>");
 }
 else{
   if(Errors == 0){
-      $("#chat-area").append(ChatInput + "?" + "<br>");
+      $("#chat-area").append("Are you sure "+ ChatInput + " is spelled correctly?" + "<br>");
       Errors++;
     }
     else if(Errors == 1){
