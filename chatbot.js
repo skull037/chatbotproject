@@ -171,6 +171,26 @@ else if( ChatInput == "flip a coin"){
 else if(coinFlip == 2){
 $("#chat-area").append("tails <br>");
 }
+}
+
+else if( ChatInput == "yes or no"||ChatInput == "no or yes"||ChatInput == "no"||ChatInput == "yes"){
+  if(coinFlip == 1){
+  $("#chat-area").append("yes <br>");
+}
+else if(coinFlip == 2){
+$("#chat-area").append("no <br>");
+}
+}
+else if( ChatInput == "true or false"||ChatInput == "false or true"||ChatInput == "false"||ChatInput == "true"){
+  if(coinFlip == 1){
+  $("#chat-area").append("true <br>");
+}
+else if(coinFlip == 2){
+$("#chat-area").append("false <br>");
+}
+}
+
+
 else{
   $("#chat-area").append("I can't tell <br>");
 }
