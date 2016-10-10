@@ -188,8 +188,6 @@ else if( ChatInput == "true or false"||ChatInput == "false or true"||ChatInput =
 else if(coinFlip == 2){
 $("#chat-area").append("false <br>");
 }
-}
-
 
 else{
   $("#chat-area").append("I can't tell <br>");
